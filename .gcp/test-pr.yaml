@@ -1,0 +1,11 @@
+steps:
+
+  - id: "Install Go"
+    name: 'gcr.io/cloud-builders/go'
+    args: ['install', 'greetings']
+    env: ['GOPATH=./go']
+
+  - id: "Test Go App"
+    name: 'gcr.io/cloud-builders/go'
+    args: ['test', 'greetings']
+    env: ['GOPATH=./go']
