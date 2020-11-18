@@ -1,0 +1,17 @@
+steps:
+
+  - id: "Install Go"
+    name: 'gcr.io/cloud-builders/go'
+    args: ['install', 'greetings']
+    env: ['GOPATH=./go']
+
+  - id: "Test Go App"
+    name: 'gcr.io/cloud-builders/go'
+    args: ['test', 'greetings']
+    env: ['GOPATH=./go']
+
+  - id: "Build Docker Image"
+    name: 'docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/go-utilizando-k8s', '-f', './go/.docker/build/Dockerfile', './go']
+
+images: ['gcr.io/$PROJECT_ID/go-utilizando-k8s']
